@@ -72,7 +72,7 @@ export default function Header({ search, setSearch }) {
                 <p
                   className={`font-bold m-0 py-1 px-3 rounded transition-colors duration-300 ease-in-out ${
                     location.pathname === "/contact"
-                      ? "bg-pink-600 text-white"
+                      ? "bg-pink-600 text-white"                                      
                       : "bg-white text-black"
                   }`}
                 >

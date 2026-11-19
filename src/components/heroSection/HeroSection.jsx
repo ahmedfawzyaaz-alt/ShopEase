@@ -1,5 +1,5 @@
 import { FaArrowRight } from "react-icons/fa";
-
+import { Link } from "react-router";
 
 export default function HeroSection() {
   return (
@@ -28,10 +28,12 @@ export default function HeroSection() {
           </p>
 
           <div className="my-4">
-            <button className="py-2 px-4 bg-pink-600 rounded text-white flex items-center gap-3 justify-center">
-              Shop Now
-              <FaArrowRight />
-            </button>
+            <Link to={"/shop"} className="text-decoration-none">
+              <button className="py-2 px-4 bg-pink-600 rounded text-white flex items-center gap-3 justify-center">
+                Shop Now
+                <FaArrowRight />
+              </button>
+            </Link>
           </div>
         </div>
       </div>

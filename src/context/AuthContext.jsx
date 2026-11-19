@@ -16,15 +16,19 @@ export default function AuthContext({ children }) {
   }, []);
 
   function addToCart(product) {
-    const existInCart = cart.find((item) => item.id === product.id);
-
-    if (existInCart) {
-      toast.error("Failed to add product");
+    if (!token) {
+      toast.error("Please Sign Up & Sign In First");
     } else {
-      const dataCart = [...cart, { ...product, quantity: 1 }];
-      setCart(dataCart);
-      localStorage.setItem("cart", JSON.stringify(dataCart));
-      toast.success("Product Added Successfully");
+      const existInCart = cart.find((item) => item.id === product.id);
+
+      if (existInCart) {
+        toast.error("Failed to add product");
+      } else {
+        const dataCart = [...cart, { ...product, quantity: 1 }];
+        setCart(dataCart);
+        localStorage.setItem("cart", JSON.stringify(dataCart));
+        toast.success("Product Added Successfully");
+      }
     }
   }
 
@@ -72,21 +76,25 @@ export default function AuthContext({ children }) {
   };
 
   const wishListProducts = (productsWishlist) => {
-    const wishlistData = wishlist.find(
-      (item) => item.id === productsWishlist.id,
-    );
-
-    if (!wishlistData) {
-      const newWishlist = [...wishlist, productsWishlist];
-      setWishlist(newWishlist);
-      localStorage.setItem("wishlist", JSON.stringify(newWishlist));
-      toast.success("Product Added Successfully");
+    if (!token) {
+      toast.error("Please Sign Up & Sign In First");
     } else {
-      const filterWishlist = wishlist.filter(
-        (item) => item.id !== productsWishlist.id, // 2 !== 2 ==> False
+      const wishlistData = wishlist.find(
+        (item) => item.id === productsWishlist.id,
       );
-      setWishlist(filterWishlist);
-      localStorage.setItem("wishlist", JSON.stringify(filterWishlist));
+
+      if (!wishlistData) {
+        const newWishlist = [...wishlist, productsWishlist];
+        setWishlist(newWishlist);
+        localStorage.setItem("wishlist", JSON.stringify(newWishlist));
+        toast.success("Product Added Successfully");
+      } else {
+        const filterWishlist = wishlist.filter(
+          (item) => item.id !== productsWishlist.id, // 2 !== 2 ==> False
+        );
+        setWishlist(filterWishlist);
+        localStorage.setItem("wishlist", JSON.stringify(filterWishlist));
+      }
     }
   };
 
@@ -96,6 +104,11 @@ export default function AuthContext({ children }) {
       setWishlist(savedWishlist);
     }
   }, []);
+
+  const clearWishlist = () => {
+    setWishlist([]);
+    localStorage.removeItem("wishlist");
+  };
 
   return (
     <>
@@ -111,6 +124,7 @@ export default function AuthContext({ children }) {
             qtyDecrease,
             wishListProducts,
             wishlist,
+            clearWishlist
           }}
         >
           {children}

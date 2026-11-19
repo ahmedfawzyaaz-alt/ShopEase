@@ -80,8 +80,8 @@ export default function Shop() {
   return (
     <>
       <div className="bg-white shadow-2xl md:p-3 p-2 rounded-2xl min-h-screen lg:mx-3">
-        <div className="grid grid-cols-12 mx-4 shadow shadow-pink-400 rounded-2xl border">
-          <div className="col-span-12 md:col-span-6 lg:col-span-4 min-h-screen md:rounded-l-2xl">
+        <div className="grid grid-cols-12 mx-4 shadow shadow-pink-400 rounded-2xl border gap-4">
+          <div className="col-span-12 md:col-span-6 lg:col-span-4  md:rounded-l-2xl  self-start">
             <div className="mx-4 my-3">
               <div className="flex justify-between items-center">
                 <p className="flex items-center gap-2 text-xl font-bold m-0">
@@ -153,7 +153,7 @@ export default function Shop() {
               </div>
             </div>
           </div>
-          <div className="col-span-12 md:col-span-6 lg:col-span-8 min-h-screen md:rounded-r-2xl">
+          <div className="col-span-12 md:col-span-6 lg:col-span-8  md:rounded-r-2xl ">
             <div className="grid grid-cols-12">
               {filterSearch?.map((product) => (
                 <div className="col-span-12  lg:col-span-4">
