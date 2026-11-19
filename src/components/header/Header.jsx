@@ -90,44 +90,47 @@ export default function Header({ search, setSearch }) {
               />
             </form>
 
-            <div className="flex items-center gap-2 justify-center my-4 md:my-0 ml-7 lg:ml-0">
-              <div>
-                <Link to={"/profile"} className="text-decoration-none">
-                  <span className="py-2 px-3 rounded-full bg-pink-200 text-pink-700">
-                    {userData?.first_name?.charAt(0).toUpperCase()}
-                  </span>
-                </Link>
-              </div>
-              <div className="mx-2">
-                <p className="m-0 font-semibold">
-                  {userData?.first_name} {userData?.last_name}
-                </p>
-                <p className="m-0 text-pink-600">{userData.email}</p>
-              </div>
-            </div>
-
             {token ? (
-              <div className="flex gap-3 md:ml-5 ml-0 justify-center mt-3 md:mb-3  ">
-                <span className=" p-2 rounded-2xl bg-pink-100 relative">
-                  <Link to={"/cart"}>
-                    <MdOutlineShoppingCart
-                      size={25}
-                      className="text-pink-600"
-                    />
-                    <small className="absolute -top-2 -right-2 px-2 text-white bg-pink-300 rounded-full">
-                      {cart.length}
-                    </small>
-                  </Link>
-                </span>
+              <div className="flex items-center gap-3 md:ml-5 ml-0 justify-center mt-3 md:mb-3  ">
+                <div className="flex flex-col md:flex-row items-center">
+                  <div className="flex items-center gap-2 justify-center my-4 md:my-0 ml-7 lg:ml-0">
+                    <div>
+                      <Link to={"/profile"} className="text-decoration-none">
+                        <span className="py-2 px-3 rounded-full bg-pink-200 text-pink-700">
+                          {userData?.first_name?.charAt(0).toUpperCase()}
+                        </span>
+                      </Link>
+                    </div>
+                    <div className="mx-2">
+                      <p className="m-0 font-semibold">
+                        {userData?.first_name} {userData?.last_name}
+                      </p>
+                      <p className="m-0 text-pink-600">{userData?.email}</p>
+                    </div>
+                  </div>
+                  <div className="flex justify-center gap-4">
+                    <span className=" p-2 rounded-2xl bg-pink-100 relative">
+                      <Link to={"/cart"}>
+                        <MdOutlineShoppingCart
+                          size={25}
+                          className="text-pink-600"
+                        />
+                        <small className="absolute -top-2 -right-2 px-2 text-white bg-pink-300 rounded-full">
+                          {cart.length}
+                        </small>
+                      </Link>
+                    </span>
 
-                <span className=" p-2 rounded-2xl bg-pink-100 relative">
-                  <Link to={"/wishlist"}>
-                    <FaHeart size={25} className="text-pink-600" />
-                    <small className="absolute -top-2 -right-2 px-2 text-white bg-pink-300 rounded-full">
-                      {wishlist.length}
-                    </small>
-                  </Link>
-                </span>
+                    <span className=" p-2 rounded-2xl bg-pink-100 relative">
+                      <Link to={"/wishlist"}>
+                        <FaHeart size={25} className="text-pink-600" />
+                        <small className="absolute -top-2 -right-2 px-2 text-white bg-pink-300 rounded-full">
+                          {wishlist.length}
+                        </small>
+                      </Link>
+                    </span>
+                  </div>
+                </div>
               </div>
             ) : (
               <div className="flex gap-3 flex-col md:flex-row text-center justify-center">
