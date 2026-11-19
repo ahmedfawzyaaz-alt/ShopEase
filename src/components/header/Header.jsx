@@ -100,7 +100,7 @@ export default function Header({ search, setSearch }) {
               </div>
               <div className="mx-2">
                 <p className="m-0 font-semibold">
-                  {userData.first_name} {userData.last_name}
+                  {userData?.first_name} {userData?.last_name}
                 </p>
                 <p className="m-0 text-pink-600">{userData.email}</p>
               </div>
